@@ -98,7 +98,7 @@ export default function Expenses() {
       </div>
 
       {/* Add/Edit */}
-      <form onSubmit={submit} className="bg-white rounded-2xl shadow-sm border p-5 grid grid-cols-1 md:grid-cols-3 gap-3">
+      <form onSubmit={submit} className="bg-white rounded-2xl shadow-sm border p-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
         <input
           name="description"
           value={form.description}
@@ -129,7 +129,7 @@ export default function Expenses() {
           <table className="min-w-full text-sm">
             <thead>
               <tr className="text-left text-gray-600">
-                <th className="p-2">Date</th>
+                <th className="p-2 hidden sm:table-cell">Date</th>
                 <th className="p-2">Description</th>
                 <th className="p-2">Amount</th>
                 <th className="p-2">Actions</th>
@@ -138,12 +138,14 @@ export default function Expenses() {
             <tbody>
               {expenses.map((e) => (
                 <tr key={e.id} className="border-t hover:bg-gray-50/60">
-                  <td className="p-2">{e.date ? new Date(e.date).toLocaleDateString() : '-'}</td>
+                  <td className="p-2 hidden sm:table-cell">{e.date ? new Date(e.date).toLocaleDateString() : '-'}</td>
                   <td className="p-2">{e.description}</td>
                   <td className="p-2">₹{Number(e.amount).toFixed(2)}</td>
-                  <td className="p-2 space-x-2">
-                    <button onClick={() => editRow(e)} className="px-2 py-1 text-xs bg-amber-100 hover:bg-amber-200 rounded">Edit</button>
-                    <button onClick={() => deleteRow(e.id)} className="px-2 py-1 text-xs bg-rose-100 hover:bg-rose-200 rounded">Delete</button>
+                  <td className="p-2">
+                    <div className="flex flex-wrap gap-2">
+                      <button onClick={() => editRow(e)} className="px-2 py-1 text-xs bg-amber-100 hover:bg-amber-200 rounded">Edit</button>
+                      <button onClick={() => deleteRow(e.id)} className="px-2 py-1 text-xs bg-rose-100 hover:bg-rose-200 rounded">Delete</button>
+                    </div>
                   </td>
                 </tr>
               ))}

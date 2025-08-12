@@ -135,15 +135,15 @@ export default function Donors() {
       </motion.div>
 
       {/* Filters */}
-      <motion.form variants={fadeUp} onSubmit={applyFilters} className="bg-white rounded-2xl shadow-sm border p-5 grid grid-cols-1 md:grid-cols-6 gap-3">
+      <motion.form variants={fadeUp} onSubmit={applyFilters} className="bg-white rounded-2xl shadow-sm border p-5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-6 gap-3">
         <input name="name" value={filters.name} onChange={onFilterChange} placeholder="Name" className="border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
         <input name="minAmount" value={filters.minAmount} onChange={onFilterChange} placeholder="Min Amount" className="border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
         <input name="maxAmount" value={filters.maxAmount} onChange={onFilterChange} placeholder="Max Amount" className="border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
         <input type="date" name="dateFrom" value={filters.dateFrom} onChange={onFilterChange} className="border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
         <input type="date" name="dateTo" value={filters.dateTo} onChange={onFilterChange} className="border rounded-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-        <div className="flex gap-2">
-          <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md shadow-sm">Apply</button>
-          <button type="button" onClick={resetFilters} className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-md">Reset</button>
+        <div className="flex flex-col sm:flex-row gap-2">
+          <button className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md shadow-sm w-full sm:w-auto">Apply</button>
+          <button type="button" onClick={resetFilters} className="px-4 py-2 bg-gray-100 hover:bg-gray-200 rounded-md w-full sm:w-auto">Reset</button>
         </div>
       </motion.form>
 
@@ -166,9 +166,9 @@ export default function Donors() {
             <tr className="text-left text-gray-600">
               <th className="p-2 w-16">Sr. No</th>
               <th className="p-2">Name</th>
-              <th className="p-2">Contact</th>
+              <th className="p-2 hidden sm:table-cell">Contact</th>
               <th className="p-2">Amount</th>
-              <th className="p-2">Date</th>
+              <th className="p-2 hidden sm:table-cell">Date</th>
               <th className="p-2">Actions</th>
             </tr>
           </thead>
@@ -177,12 +177,14 @@ export default function Donors() {
               <motion.tr variants={rowVariant} key={d.id} className="border-t hover:bg-gray-50/60">
                 <td className="p-2 text-gray-500">{idx + 1}</td>
                 <td className="p-2">{d.name}</td>
-                <td className="p-2">{d.contact || '-'}</td>
+                <td className="p-2 hidden sm:table-cell">{d.contact || '-'}</td>
                 <td className="p-2">₹{Number(d.donation_amount).toFixed(2)}</td>
-                <td className="p-2">{d.date ? new Date(d.date).toLocaleDateString() : '-'}</td>
-                <td className="p-2 space-x-2">
-                  <button onClick={() => editRow(d)} className="px-2 py-1 text-xs bg-amber-100 hover:bg-amber-200 rounded">Edit</button>
-                  <button onClick={() => deleteRow(d.id)} className="px-2 py-1 text-xs bg-rose-100 hover:bg-rose-200 rounded">Delete</button>
+                <td className="p-2 hidden sm:table-cell">{d.date ? new Date(d.date).toLocaleDateString() : '-'}</td>
+                <td className="p-2">
+                  <div className="flex flex-wrap gap-2">
+                    <button onClick={() => editRow(d)} className="px-2 py-1 text-xs bg-amber-100 hover:bg-amber-200 rounded">Edit</button>
+                    <button onClick={() => deleteRow(d.id)} className="px-2 py-1 text-xs bg-rose-100 hover:bg-rose-200 rounded">Delete</button>
+                  </div>
                 </td>
               </motion.tr>
             ))}
