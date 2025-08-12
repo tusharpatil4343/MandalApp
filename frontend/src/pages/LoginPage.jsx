@@ -44,8 +44,13 @@ export default function LoginPage() {
       <form onSubmit={onSubmit} className="bg-white shadow rounded-lg p-6 w-full max-w-sm space-y-4">
         {/* Branding */}
         <div className="flex flex-col items-center gap-2">
-          <div className="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-600 to-blue-600 grid place-items-center text-white shadow">
-            <span className="text-2xl leading-none">🪔</span>
+          <div className="w-14 h-14 rounded-full bg-white overflow-hidden shadow">
+            <img
+              src="/WhatsApp Image 2025-08-09 at 07.47.09_3b5b5982.jpg"
+              alt="Mandal Logo"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
           </div>
           <div className="font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-500 tracking-wide">
             MANDAL
