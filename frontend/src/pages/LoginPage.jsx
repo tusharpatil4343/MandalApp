@@ -20,7 +20,7 @@ export default function LoginPage() {
       // NOTE: No real backend auth yet. Store a dummy token (no artificial delay).
 
       // Only allow admin login (mocked)
-      const isAdmin = form.username === 'admin' && form.password === '281102';
+      const isAdmin = form.username === 'admin' && form.password === 'Tushar@4343';
       if (!isAdmin) {
         toast.error('Invalid admin credentials');
         return;

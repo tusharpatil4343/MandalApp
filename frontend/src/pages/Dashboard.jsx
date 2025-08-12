@@ -85,7 +85,17 @@ export default function Dashboard() {
       <motion.div className="space-y-8" initial="hidden" animate="visible" variants={containerStagger}>
         {/* Hero */}
         <motion.div className="flex items-center justify-between" variants={fadeUp}>
-          
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-full overflow-hidden shadow bg-white">
+              <img
+                src="/WhatsApp Image 2025-08-09 at 07.47.09_3b5b5982.jpg"
+                alt="Mandal Logo"
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <h1 className="text-2xl font-semibold tracking-tight">Dashboard</h1>
+          </div>
         </motion.div>
 
         {/* KPI cards */}
