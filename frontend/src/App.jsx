@@ -76,7 +76,14 @@ function PageShell({ showNavbar, isAdmin }) {
         <Suspense fallback={<div className="py-16 text-center text-gray-600 animate-fade-in-up">Loading…</div>}>
           <AnimatePresence mode="wait" initial={true}>
             <Routes location={location} key={location.pathname}>
-              <Route path="/login" element={<PageWrapper variants={pageVariants}><LoginPage /></PageWrapper>} />
+              <Route
+                path="/login"
+                element={isAdmin ? (
+                  <Navigate to="/" replace />
+                ) : (
+                  <PageWrapper variants={pageVariants}><LoginPage /></PageWrapper>
+                )}
+              />
               <Route
                 path="/"
                 element={

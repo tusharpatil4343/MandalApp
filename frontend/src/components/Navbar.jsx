@@ -22,9 +22,14 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex h-14 items-center justify-between">
           <div className="flex items-center gap-3">
-            {/* Emblem */}
-            <div className="w-9 h-9 rounded-full bg-white/15 grid place-items-center shadow-inner">
-              <span className="text-xl">🪔</span>
+            {/* Emblem (logo from public/) */}
+            <div className="w-9 h-9 rounded-full bg-white/15 overflow-hidden shadow-inner">
+              <img
+                src="/WhatsApp Image 2025-08-09 at 07.47.09_3b5b5982.jpg"
+                alt="Mandal Logo"
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
             </div>
             {/* Wordmark */}
             <div className="leading-tight">
